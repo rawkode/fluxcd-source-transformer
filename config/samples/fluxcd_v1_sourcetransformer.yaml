@@ -1,0 +1,16 @@
+apiVersion: fluxcd.rawkode.dev/v1
+kind: SourceTransformer
+metadata:
+  labels:
+    app.kubernetes.io/name: sourcetransformer
+    app.kubernetes.io/instance: sourcetransformer-sample
+    app.kubernetes.io/part-of: fluxcd-source-transformer
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: fluxcd-source-transformer
+  name: sourcetransformer-sample
+spec:
+  sourceRef:
+    name: gitrepository-sample
+  transformer:
+    command: cue eval
+    output: stdout

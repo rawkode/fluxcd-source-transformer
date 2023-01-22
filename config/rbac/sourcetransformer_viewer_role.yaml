@@ -1,0 +1,27 @@
+# permissions for end users to view sourcetransformers.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: sourcetransformer-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: fluxcd-source-transformer
+    app.kubernetes.io/part-of: fluxcd-source-transformer
+    app.kubernetes.io/managed-by: kustomize
+  name: sourcetransformer-viewer-role
+rules:
+- apiGroups:
+  - fluxcd.rawkode.dev
+  resources:
+  - sourcetransformers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - fluxcd.rawkode.dev
+  resources:
+  - sourcetransformers/status
+  verbs:
+  - get
